@@ -3,9 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "motion/react";
+import AiConcierge from "./components/AiConcierge";
+import MeditativeBlog from "./components/MeditativeBlog";
 
 export default function App() {
+  const [showBlog, setShowBlog] = useState(false);
+
   useEffect(() => {
     // Failsafe: if anything throws, never leave the page unreadable
     const emergency = () => {
@@ -1148,6 +1153,12 @@ void main(){ vUv = aPos*0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }`;
         <nav className="head-nav" aria-label="Primary">
           <a href="#philosophy">Philosophy</a>
           <a href="#work">Work</a>
+          <button 
+            onClick={() => setShowBlog(true)} 
+            className="hover:text-orange-400 cursor-pointer text-gray-300 uppercase tracking-widest text-[11px] transition-colors bg-transparent border-none font-sans font-medium"
+          >
+            Satori Scroll
+          </button>
           <a href="#contact">Contact</a>
         </nav>
         <button id="soundToggle" aria-pressed="false" aria-label="Toggle ambient sound">
@@ -1559,8 +1570,8 @@ void main(){ vUv = aPos*0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }`;
                 <em>weather together.</em>
               </span>
             </h2>
-            <a className="big-mail" href="mailto:hello@renaoki.jp" data-magnet="">
-              hello@renaoki.jp
+            <a className="big-mail" href="mailto:ceo@walizen.com" data-magnet="">
+              ceo@walizen.com
             </a>
             <div className="contact-meta">
               <span className="avail" data-reveal="">
@@ -1569,13 +1580,13 @@ void main(){ vUv = aPos*0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }`;
               <a href="#" data-reveal="">
                 Awwwards
               </a>
-              <a href="#" data-reveal="">
+              <a href="https://github.com/walizen" target="_blank" rel="noopener noreferrer" data-reveal="">
                 GitHub
               </a>
               <a href="#" data-reveal="">
                 Instagram
               </a>
-              <a href="#" data-reveal="">
+              <a href="https://x.com/walizen" target="_blank" rel="noopener noreferrer" data-reveal="">
                 X / Twitter
               </a>
             </div>
@@ -1594,6 +1605,14 @@ void main(){ vUv = aPos*0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }`;
         </div>
         {/* /daylight */}
       </main>
+
+      {/* AI Concierge floating advisor */}
+      <AiConcierge />
+
+      {/* Full-screen Meditative Scroll Section */}
+      <AnimatePresence>
+        {showBlog && <MeditativeBlog onClose={() => setShowBlog(false)} />}
+      </AnimatePresence>
     </>
   );
 }
