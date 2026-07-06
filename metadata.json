@@ -1,0 +1,6 @@
+{
+  "name": "Ren Aoki — Between Storm & Stillness",
+  "description": "Ren Aoki. Creative developer in Tokyo. Digital experiences that move like water and strike like light.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
